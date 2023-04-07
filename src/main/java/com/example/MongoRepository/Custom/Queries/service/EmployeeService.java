@@ -3,9 +3,15 @@ package com.example.MongoRepository.Custom.Queries.service;
 import com.example.MongoRepository.Custom.Queries.Repository.EmployeeRepository;
 import com.example.MongoRepository.Custom.Queries.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Pageable;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EmployeeService {
@@ -31,4 +37,15 @@ public class EmployeeService {
     }
 
 
+    public Map<String, Object> getAllEmployeeInPage(int pageNo, int pageSize, String sortBy) {
+        Map<String,Object> response=new HashMap<>();
+        Sort sort=Sort.by(sortBy);
+        Pageable page=PageRequest.of(pageNo,pageSize, sort);
+        Page<Employee> employeePage=employeeRepository.findAll(page);
+        response.put("data",employeePage.getContent());
+        response.put("Total no. of page",employeePage.getTotalPages());
+        response.put("Total no. of elements",employeePage.getTotalElements());
+        response.put("Current Page No.",employeePage.getNumber()+1);
+        return response;
+    }
 }
