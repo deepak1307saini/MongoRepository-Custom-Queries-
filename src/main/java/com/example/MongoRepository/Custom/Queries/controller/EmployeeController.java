@@ -58,5 +58,10 @@ public class EmployeeController {
         return employeeService.getAllByZipCode(zipcode);
     }
 
+    @GetMapping("/salary")
+    public List<Employee> getAllBySalary(@RequestParam(name = "salary")int salary){
+        return employeeService.getAllBySalaryGreaterThan(salary);
+    }
+
 
 }

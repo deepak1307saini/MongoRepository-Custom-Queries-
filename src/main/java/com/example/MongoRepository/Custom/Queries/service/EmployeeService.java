@@ -60,4 +60,8 @@ public class EmployeeService {
     public List<Employee> getAllByZipCode(int zipcode) {
         return employeeRepository.findAllByAddressZipcode(zipcode);
     }
+
+    public List<Employee> getAllBySalaryGreaterThan(int salary) {
+        return employeeRepository.abc(salary);
+    }
 }
