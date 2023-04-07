@@ -52,4 +52,8 @@ public class EmployeeService {
         System.out.println(e);
         return employeeRepository.findAll(e);
     }
+
+    public List<Employee> getAllByFirstName(String firstName) {
+        return employeeRepository.findAllByFirstNameStartingWith(firstName);
+    }
 }

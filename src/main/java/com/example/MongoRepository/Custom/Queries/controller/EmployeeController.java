@@ -47,4 +47,9 @@ public class EmployeeController {
     public List<Employee> getAllByExample(@RequestBody Employee employee){
         return employeeService.getAllByExample(employee);
     }
+
+    @GetMapping("/{firstName}")
+    public List<Employee> getAllByFirstName(@PathVariable(name = "firstName")String firstName){
+        return employeeService.getAllByFirstName(firstName);
+    }
 }
