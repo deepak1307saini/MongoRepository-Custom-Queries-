@@ -3,11 +3,8 @@ package com.example.MongoRepository.Custom.Queries.service;
 import com.example.MongoRepository.Custom.Queries.Repository.EmployeeRepository;
 import com.example.MongoRepository.Custom.Queries.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Pageable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -47,5 +44,11 @@ public class EmployeeService {
         response.put("Total no. of elements",employeePage.getTotalElements());
         response.put("Current Page No.",employeePage.getNumber()+1);
         return response;
+    }
+
+    public List<Employee> getAllByExample(Employee employee) {
+        Example<Employee> e=Example.of(employee);
+        System.out.println(e);
+        return employeeRepository.findAll(e);
     }
 }

@@ -41,4 +41,10 @@ public class EmployeeController {
                                      @RequestParam(name = "sortBy", defaultValue = "id") String sortBy){
         return employeeService.getAllEmployeeInPage(pageNo,pageSize,sortBy);
     }
+
+
+    @GetMapping("/example")
+    public List<Employee> getAllByExample(@RequestBody Employee employee){
+        return employeeService.getAllByExample(employee);
+    }
 }
