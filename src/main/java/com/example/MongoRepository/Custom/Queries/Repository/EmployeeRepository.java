@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends MongoRepository<Employee,String> {
     List<Employee> findAllByFirstNameStartingWith(String firstName);
+
+    List<Employee> findAllByAddressZipcode(int zipcode);
 }

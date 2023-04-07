@@ -56,4 +56,8 @@ public class EmployeeService {
     public List<Employee> getAllByFirstName(String firstName) {
         return employeeRepository.findAllByFirstNameStartingWith(firstName);
     }
+
+    public List<Employee> getAllByZipCode(int zipcode) {
+        return employeeRepository.findAllByAddressZipcode(zipcode);
+    }
 }

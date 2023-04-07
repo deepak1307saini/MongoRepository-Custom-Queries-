@@ -52,4 +52,11 @@ public class EmployeeController {
     public List<Employee> getAllByFirstName(@PathVariable(name = "firstName")String firstName){
         return employeeService.getAllByFirstName(firstName);
     }
+
+    @GetMapping("/zipcode")
+    public List<Employee> getAllByZipCode(@RequestParam(name = "zipcode")int zipcode){
+        return employeeService.getAllByZipCode(zipcode);
+    }
+
+
 }
