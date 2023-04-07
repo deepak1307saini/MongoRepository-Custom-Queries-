@@ -47,7 +47,8 @@ public class EmployeeService {
     }
 
     public List<Employee> getAllByExample(Employee employee) {
-        Example<Employee> e=Example.of(employee);
+        ExampleMatcher matcher=ExampleMatcher.matchingAny().withIgnoreCase().withMatcher("firstName", ExampleMatcher.GenericPropertyMatcher.of(ExampleMatcher.StringMatcher.ENDING));
+        Example<Employee> e=Example.of(employee,matcher);
         System.out.println(e);
         return employeeRepository.findAll(e);
     }
